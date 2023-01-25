@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Создать в html список состоящий из 3 - х произвольных элементов li // Нужно создать кнопку которая будет добавлять элементы списка с текстом“ новый элемент списка” // Создать кнопку, которая будет удалять первый элемент из созданного списка // Создать
+    кнопку, при клике на которую ей добавляется - убирается класс“ click” -->
+    <ul class="menu">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+</body>
+<script>
+    const menuEl = document.querySelector('.menu');
+    const buttonAdd = document.createElement('button');
+    buttonAdd.textContent = 'Добавить';
+    menuEl.prepend(buttonAdd);
+
+    const addItem = (e) => {
+        ['new item'].forEach((text) => {
+            const listItem = document.createElement('li');
+            listItem.append(text);
+            menuEl.append(listItem);
+
+        });
+    }
+    buttonAdd.addEventListener('click', addItem);
+
+    const buttonDel = document.createElement('button');
+    buttonDel.textContent = 'Удалить';
+    menuEl.prepend(buttonDel);
+    const delItem = () => {
+        document.querySelector('li').remove();
+    }
+    buttonDel.addEventListener('click', delItem);
+
+    const buttonChange = document.createElement('button');
+    buttonChange.textContent = 'Поменять';
+    menuEl.prepend(buttonChange);
+    buttonChange.addEventListener('click', (e) => {
+        e.target.classList.toggle("click");
+    });
+</script>
+
+</html>
